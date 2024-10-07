@@ -1,0 +1,259 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cards</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(5, 5, 5);
+            padding: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: white;
+            height: 370px;
+            width: 240px;
+            border-radius: 7px;
+            padding: 13px;
+            margin: 0px 15px;
+        }
+
+        .img {
+            padding: 5px;
+            
+        }
+
+        #image {
+            height: 120px;
+            width: 207px;
+            border-radius: 7px;
+            object-fit: contain;
+        }
+
+        p {
+            font-size: 13px;
+            color: gray;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+        }
+
+        .button {
+            text-align: center;
+            padding: 10px;
+            
+            
+        }
+        .button button{
+            
+            background-color: black;
+            color: white;
+            font-size: 15px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin: 20px 2px;
+            padding: 10px;
+        }
+        .button button:hover{
+            background-color: rgba(238, 211, 211, 0.829);
+            color: #000;
+        }
+        h1{
+            font-size: 25px;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            .card {
+                width: 45%;
+                margin: 10px;
+            }
+
+            #image {
+                height: 100px;
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 16px;
+            }
+
+            p {
+                font-size: 9px;
+                
+            }
+
+            .button button {
+                font-size: 5px;
+                
+            }
+        }
+
+        
+        @media (max-width: 480px) {
+            body {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .card {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            #image {
+                width: 100%;
+                height: 90px;
+            }
+
+            h1 {
+                font-size: 4em;
+            }
+
+            p {
+                font-size: 5px;
+                
+            }
+
+            .button button {
+                font-size: 5px;
+                padding: 1px;
+                width: 10%;
+                
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div class="img">
+            <img id="image" src="/Assets\images.jpeg" alt="nikon">
+        </div>
+        <h1>Nikon</h1>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt voluptatibus voluptate odio, rem quis, quas
+            pariatur exercitationem eum incidunt rerum quaerat harum recusandae tempora adipisci quasi, unde fuga culpa
+            delectus?</p>
+        <div class="button">
+            <button id="add-camera" class="btn">Add to Cart</button>
+            <button id="view-camera" class="btn">View Cart</button>
+        </div>
+    </div>
+    <div id="cart-display"></div>
+    <div class="card">
+        <div class="img">
+            <img id="image" src="/Assets\iphone.jpeg" alt="iphone">
+        </div>
+        <h1>IPhone</h1>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt voluptatibus voluptate odio, rem quis, quas
+            pariatur exercitationem eum incidunt rerum quaerat harum recusandae tempora adipisci quasi, unde fuga culpa
+            delectus?</p>
+        <div class="button">
+            <button id="add-iphone" class="btn">Add to Cart</button>
+            <button id="view-iphone" class="btn">View Cart</button>
+        </div>
+    </div>
+    <div class="card">
+        <div class="img">
+            <img id="image" src="/Assets\Rolex.jpeg" alt="Rolex">
+        </div>
+        <h1>Rolex</h1>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt voluptatibus voluptate odio, rem quis, quas
+            pariatur exercitationem eum incidunt rerum quaerat harum recusandae tempora adipisci quasi, unde fuga culpa
+            delectus?</p>
+        <div class="button">
+            <button id="add-watch" class="btn">Add to Cart</button>
+            <button id="view-watch" class="btn">View Cart</button>
+        </div>
+    </div>
+    <div class="card">
+        <div class="img">
+            <img id="image" src="/Assets\earbuds.webp" alt="ear-buds">
+        </div>
+        <h1>Ear-Buds</h1>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt voluptatibus voluptate odio, rem quis, quas
+            pariatur exercitationem eum incidunt rerum quaerat harum recusandae tempora adipisci quasi, unde fuga culpa
+            delectus?</p>
+        <div class="button">
+            <button id="add-earbuds" class="btn">Add to Cart</button>
+            <button id="view-earbuds" class="btn">View Cart</button>
+        </div>
+    </div>
+
+    <script>
+        let cart=[];
+
+        let camera ={name: 'camera', description:'a good camera'};
+        let iphone ={name: 'iphone', description:'a good iphone'};
+        let watch ={name: 'watch', description:'a good watch'};
+        let earbuds ={name: 'earbuds', description:'a good eaarbuds'};
+
+        document.getElementById('add-camera').addEventListener('click', function() {
+            cart.push({...camera });
+            alert(camera.name +  ' added to the cart. Total items: ' +cart.length);
+        });
+
+        document.getElementById("view-camera").addEventListener('click', function() {
+            displayCart();
+        });
+
+        document.getElementById('add-iphone').addEventListener('click', function() {
+            cart.push({...iphone });
+            alert(iphone.name +  ' added to the cart. Total items: ' +cart.length);
+        });
+
+        document.getElementById("view-iphone").addEventListener('click', function() {
+            displayCart();
+        });
+
+        document.getElementById('add-watch').addEventListener('click', function() {
+            cart.push({...watch });
+            alert(watch.name +  ' added to the cart. Total items: ' +cart.length);
+        });
+
+        document.getElementById("view-watch").addEventListener('click', function() {
+            displayCart();
+        });
+
+        document.getElementById('add-earbuds').addEventListener('click', function() {
+            cart.push({...earbuds });
+            alert(earbuds.name +  ' added to the cart. Total items: ' +cart.length);
+        });
+
+        document.getElementById("view-earbuds").addEventListener('click', function() {
+            displayCart();
+        });
+
+        function displayCart() {
+            let cartDisplay = document.getElementById('cart-display');
+            cartDisplay.innerHTML = '';
+
+            if (cart.length > 0) {
+                cart.forEach((item, index) => {
+                    let itemDiv = document.createElement('div');
+                    itemDiv.classList.add('cart-item');
+
+                    itemDiv.innerHTML = `
+                        <p><strong>${index + 1}.</strong> Name: ${item.name}</p>
+                        <p><strong>Description:</strong> ${item.description}</p>
+                    `;
+                    cartDisplay.appendChild(itemDiv);
+                });
+            } else {
+                cartDisplay.innerHTML = '<p>Your cart is empty.</p>';
+            }
+        }
+    </script>
+</body>
+
+</html>
